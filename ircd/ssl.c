@@ -1094,9 +1094,9 @@ const char *ssl_cipherstr(ssl_session_t *ssl) {
                 else SSL_CTX_set_client_CA_list(*cred, SSL_load_client_CA_file(*trusts));
             }
             SSL_CTX_set_mode(*cred, SSL_MODE_ENABLE_PARTIAL_WRITE | SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
-            if(!SSL_CTX_use_certificate_file(*cred, cert, SSL_FILETYPE_PEM)) {
+            if(!SSL_CTX_use_certificate_chain_file(*cred, cert)) {
                 SSL_CTX_free(*cred);
-                ssl_msg(SSL_NOTICE, "SSL: SSL_CTX_use_certificate_file('%s'): failed", cert);
+                ssl_msg(SSL_NOTICE, "SSL: SSL_CTX_use_certificate_chain_file('%s'): failed", cert);
                 return 0;
             }
             if(!SSL_CTX_use_PrivateKey_file(*cred, cert, SSL_FILETYPE_PEM)) {
@@ -1113,9 +1113,9 @@ const char *ssl_cipherstr(ssl_session_t *ssl) {
                 return 0;
             }
             SSL_CTX_set_mode(*cred, SSL_MODE_ENABLE_PARTIAL_WRITE | SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
-            if(!SSL_CTX_use_certificate_file(*cred, cert, SSL_FILETYPE_PEM)) {
+            if(!SSL_CTX_use_certificate_chain_file(*cred, cert)) {
                 SSL_CTX_free(*cred);
-                ssl_msg(SSL_NOTICE, "SSL: SSL_CTX_use_certificate_file('%s'): failed", cert);
+                ssl_msg(SSL_NOTICE, "SSL: SSL_CTX_use_certificate_chain_file('%s'): failed", cert);
                 return 0;
             }
             if(!SSL_CTX_use_PrivateKey_file(*cred, cert, SSL_FILETYPE_PEM)) {
