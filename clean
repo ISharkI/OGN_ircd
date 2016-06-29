@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ -f "LICENSE" ] ; then
+  HASH=`md5sum LICENSE | awk '{print $1}'`
+  if [ "x$HASH" = "xda10ed7cf8038981c580e11c1d3e8fb6" ] ; then
+    rm -vf ircd/*.o
+    rm "-vfR" "configure" "Makefile" "doc/Makefile" "ircd/Makefile" "ircd/version.c" "config.log" "config.status" "config.h" "config.h.in" "autom4te.cache" "stamp-h" "aclocal.m4" "ircd/umkpasswd" "ircd/table_gen" "ircd/ircd" "ircd/chattr.tab.c" "ircd/lex.yy.c" "ircd/y.tab.h" "ircd/y.tab.c" ircd/*.orig
+  else
+    echo "You need to be in the ircu-core directory where the configure.in file lies."
+  fi
+fi
+
